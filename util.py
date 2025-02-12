@@ -227,17 +227,30 @@ def check_forward_pass(stacked_logreg_model_class,
         "a_3": a_3
     }
 
-    # Pre-computed correct outputs
+    # Pre-computed correct outputs for seed 1 (old default init seed)
+    # seed_1_correct_outputs = {
+    #     "a_1": np.array([[0.02494248, 0.05104596],
+    #                      [0.06515092, 0.02061314],
+    #                      [0.19114486, 0.07487885]]),
+    #     "a_2": np.array([[0.48480197, 0.48894751],
+    #                      [0.48195428, 0.48179426],
+    #                      [0.44449568, 0.44541923]]),
+    #     "a_3": np.array([[0.47804574],
+    #                      [0.47805725],
+    #                      [0.4797901]])
+    # }
+    
+    # Pre-computed correct outputs for seed 1234 (current default init seed)
     correct_outputs = {
-        "a_1": np.array([[0.02494248, 0.05104596],
-                         [0.06515092, 0.02061314],
-                         [0.19114486, 0.07487885]]),
-        "a_2": np.array([[0.48480197, 0.48894751],
-                         [0.48195428, 0.48179426],
-                         [0.44449568, 0.44541923]]),
-        "a_3": np.array([[0.47804574],
-                         [0.47805725],
-                         [0.4797901]])
+        "a_1": np.array([[0.78215436, 0.83993657],
+                         [0.95143653, 0.66631161],
+                         [0.89182168, 0.56208439]]), 
+        "a_2": np.array([[0.51911413, 0.5462156 ], 
+                         [0.57142199, 0.49067908],
+                         [0.5753812 , 0.47972371]]), 
+        "a_3": np.array([[0.77789913],
+                         [0.77940367],
+                         [0.77828089]])
     }
 
     for name, output in test_network_outputs.items():
@@ -275,16 +288,30 @@ def check_backward_pass(stacked_logreg_model_class,
     test_network_gradients = test_network.backward_pass(X[:3, :], y[:3], a_1,
                                                         a_2, a_3)
 
+    # Pre-computed correct outputs for seed 1 (old default init seed)
+    # seed_1_correct_gradients = {
+    #     "W_3": np.array([[0.22514129],
+    #                      [0.22592408]]),
+    #     "b_3": np.array([[0.47863103]]),
+    #     "W_2": np.array([[-0.00325071, 0.00122269],
+    #                      [-0.00169606, 0.00063797]]),
+    #     "b_2": np.array([[-0.03476859, 0.01307702]]),
+    #     "W_1": np.array([[-0.00463418, -0.00307033],
+    #                      [0.00296584, 0.0024738]]),
+    #     "b_1": np.array([[0.00135783, 0.00099955]])
+    # }
+    
+    # Pre-computed correct outputs for seed 1234 (current default init seed)
     correct_gradients = {
-        "W_3": np.array([[0.22514129],
-                         [0.22592408]]),
-        "b_3": np.array([[0.47863103]]),
-        "W_2": np.array([[-0.00325071, 0.00122269],
-                         [-0.00169606, 0.00063797]]),
-        "b_2": np.array([[-0.03476859, 0.01307702]]),
-        "W_1": np.array([[-0.00463418, -0.00307033],
-                         [0.00296584, 0.0024738]]),
-        "b_1": np.array([[0.00135783, 0.00099955]])
+        "W_3": np.array([[0.43233167],
+                         [0.39356584]]), 
+        "b_3": np.array([[0.77852789]]), 
+        "W_2": np.array([[0.21729521, 0.18053744],
+                      [0.17155242, 0.14209996]]), 
+        "b_2": np.array([[0.24845651, 0.2062255]]), 
+        "W_1": np.array([[-0.01709541, -0.01199752], 
+                         [0.01662384, 0.00842318]]), 
+        "b_1": np.array([[0.00588494, 0.00339362]])
     }
 
     for name, gradient in test_network_gradients.items():
@@ -411,17 +438,30 @@ def check_forward_pass_yelp(yelp_network_class,
         "a_3": a_3
     }
 
-    # Pre-computed correct outputs
+    # Pre-computed correct outputs for seed 1 (old default init seed)
+    # seed_1_correct_outputs = {
+    #     'a_1': np.array([[0., 0.95457457],
+    #                      [0., 0.85213306],
+    #                      [0., 0.75179564]]),
+    #     'a_2': np.array([[0.27235127, 0.40065728],
+    #                      [0.24312351, 0.35766018],
+    #                      [0.21449607, 0.31554622]]),
+    #     'a_3': np.array([[0.45312089],
+    #                      [0.45812682],
+    #                      [0.46303814]])
+    # }
+    
+    # Pre-computed correct outputs for seed 1234 (current default init seed)
     correct_outputs = {
-        'a_1': np.array([[0., 0.95457457],
-                         [0., 0.85213306],
-                         [0., 0.75179564]]),
-        'a_2': np.array([[0.27235127, 0.40065728],
-                         [0.24312351, 0.35766018],
-                         [0.21449607, 0.31554622]]),
-        'a_3': np.array([[0.45312089],
-                         [0.45812682],
-                         [0.46303814]])
+        'a_1': np.array([[0., 0.4267531],
+                         [0., 0.],
+                         [0., 0.62810926]]),
+        'a_2': np.array([[0.15196385, 0.08609083],
+                         [0., 0.],
+                         [0.2236654, 0.12671132]]),
+        'a_3': np.array([[0.53890433],
+                         [0.5],
+                         [0.55712612]])
     }
 
     for name, output in test_network_outputs.items():
@@ -458,13 +498,24 @@ def check_backward_pass_yelp(yelp_network_class,
     test_network_gradients = test_network.backward_pass(
         X[:3, :], y[:3], a_1, a_2, a_3)
 
+    # Pre-computed correct outputs for seed 1 (old default init seed)
+    # correct_gradients = {
+    #     "W_3": np.array([-0.13195385]),
+    #     "b_3": np.array([-0.54190472]),
+    #     "W_2": np.array([0., 0.]),
+    #     "b_2": np.array([0.48445836, -0.07494552]),
+    #     "W_1": np.array([0., 0.03387387]),
+    #     "b_1": np.array([0., 0.10676524])
+    # }
+    
+    # Pre-computed correct outputs for seed 1234 (current default init seed)
     correct_gradients = {
-        "W_3": np.array([-0.13195385]),
-        "b_3": np.array([-0.54190472]),
+        "W_3": np.array([-0.05637515]),
+        "b_3": np.array([-0.46798985]),
         "W_2": np.array([0., 0.]),
-        "b_2": np.array([0.48445836, -0.07494552]),
-        "W_1": np.array([0., 0.03387387]),
-        "b_1": np.array([0., 0.10676524])
+        "b_2": np.array([-0.11914909, -0.33545647]),
+        "W_1": np.array([0., -0.03424743]),
+        "b_1": np.array([0., -0.11010132])
     }
 
     for name, gradient in test_network_gradients.items():
