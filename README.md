@@ -1,6 +1,6 @@
 #  Programming Assignment 5 - Neural Networks
   
-# # Getting the Assignment
+## Getting the Assignment
   
 ### macOS/Ubuntu for Windows/Linux
 
